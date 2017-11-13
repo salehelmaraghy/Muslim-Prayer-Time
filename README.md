@@ -1,6 +1,9 @@
 # Muslim Prayer Time
 
-This project is to determine muslim prayer time based on the current user’s location,for any date and to notify the user when the prayer time comes.
+This project is to determine muslim prayer time based on the current user’s location,for any date and to notify the user when
+
+the prayer time comes.
+
 ---
 
 # Devices:
