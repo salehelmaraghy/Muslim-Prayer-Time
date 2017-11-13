@@ -1,8 +1,9 @@
 # Muslim Prayer Time
 
 This project is to determine muslim prayer time based on the current user’s location,for any date and to notify the user when the prayer time comes.
+---
 
-==========================================================================================
+# Devices:
 
 Microcontroller:ATmega32.
 
@@ -20,7 +21,7 @@ Buzzer: to notify when the prayer time equals the time in the RTC.
 
 Buttons:for user interface.
 
-===========================================================================================
+***
 
 .Internal pheriphrals:
 
@@ -32,9 +33,9 @@ timer:to get the time every 30 seconds from the RTC and compare it with the.
 
 EEPROM:to save the longitute and latitute in it,in case the power is cutoff.
 
-===========================================================================================
+---
 
-Pin configration:
+# Pin configration:
 
 LCD: 	  Port B- B4,B5,B6,B7 with the data pins.
      	  Port C- C6:RS  C7:EN.
@@ -54,8 +55,8 @@ Led :	  Port D4 to blink while GPS processing.
 
 Buttons:Port D2 D3 for user interface.
 
-============================================================================================
-Application:
+---
+# Application:
 
 1-At this project, first it will ask if you want to enter the date or depend on the date saved on the RTC,so it can calculate the Julian data.
 
@@ -78,9 +79,9 @@ the LCD will display the prayer time and the buzzer will notify the user with it
 
 again,so it can work indoor,but only after burning the code the GPS have to be faced to the sky.
 
-==============================================================================================
+---
 
-Refrences:
+# Refrences:
 
 1-http://praytimes.org/wiki/Prayer_Times_Calculation.
 
