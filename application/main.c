@@ -1,7 +1,7 @@
 /*
  * main.c
  *
- *  Created on: ??þ/??þ/????
+ *  Created on: ??Ã¾/??Ã¾/????
  *      Author: SALEH
  */
 #include"../HAL/GPS.h"
@@ -55,10 +55,10 @@ int main()
 
 ////*****check if saved longit and latit or use the GPS****////
     float longit_eeprom=EEPROM_READ_float(100);
-	float latit_eeprom=EEPROM_READ_float(108);
+    float latit_eeprom=EEPROM_READ_float(108);
 //*****************enter the date*************************////
 
-	choose_date_way(); //to enter the date manually
+	choose_date_way(); //to either enter date manually or use the date saved on the RTC
 	CLEAR_LCD();
 	 //****************************to check if there is a previous long-lat saved in the eeprom********************/
 	while((int)longit_eeprom==255 ||(int)latit_eeprom==255 ) //the EEPROM is empty
