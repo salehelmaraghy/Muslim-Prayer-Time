@@ -83,6 +83,9 @@ the LCD will display the prayer time and the buzzer will notify the user with it
 again,so it can work indoor,but only after burning the code the GPS have to be faced to the sky.
 
 ---
+# video
+https://www.youtube.com/watch?v=C1ecsGr4YC8
+---
 
 # Refrences:
 
