@@ -5,7 +5,7 @@
  *      Author: SALEH
  */
 #include"prayer.h"
-
+extern unsigned char day_rtc,month_rtc,year_rtc;
 uint8_t prayer_time[7];
 uint16_t year_set;
 unsigned char month_set,day_set;
@@ -238,4 +238,37 @@ void set_date()
 					}
 
 	}
-
+void choose_date_way()
+{
+	//this function is to let the user to choose either enter the date manually or get ir from the RTC
+	CLEAR_LCD();
+	LCD_GOTO(1,1);
+	LCD_SEND_STR("press1enter date");
+	LCD_GOTO(2,1);
+	LCD_SEND_STR("press2 RTC date");
+	uint8_t key_flag=0;
+	while(key_flag==0)
+	{
+		if(CHECKBIT(button_pin,button1))
+		{ //if button one pressed so it means enter manually
+			_delay_ms(200);
+			key_flag=1;
+		}
+		if(CHECKBIT(button_pin,button2))
+		{ //if button one pressed so it means to get it from the RTC
+			_delay_ms(200);
+			key_flag=2;
+		}
+	}
+	if(key_flag==1)
+	{
+		set_date();
+	}
+	else if(key_flag==2)
+	{
+		RTC_GET_DATE();
+		year_set=year_rtc+2000; //+2000 because the date saved to the RTC as the last 2 digits only
+		day_set=day_rtc; //this variables are global ones,will be used to get the julian data at the main function.
+		month_set=month_rtc;
+	}
+}

@@ -10,6 +10,7 @@
 #include"../service_layer/header.h"
 #include"../HAL/LCD.h"
 #include"../HAL/KEYPAD.h"
+#include"../HAL/RTC.h"
 #define PI 3.141592
 #define MAGHRIB 0
 #define ISHA 1
@@ -23,6 +24,6 @@ float three_prayers(char pray,float latit_pray,double dec_angle,float zohr);
 void convert_to_string(float time);
 void get_min(float time,uint8_t* time_min,uint8_t* time_hour);
 void set_date();
-
+void choose_date_way();
 
 #endif /* PRAYER_H_ */

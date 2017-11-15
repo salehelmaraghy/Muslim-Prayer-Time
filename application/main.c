@@ -38,8 +38,8 @@ int main()
 	UART_INIT();
 	TWI_init();
 	keypad_init();
-	RTC_SET_DATE(0x11,0x11,0x17);
-	RTC_SET_TIME(0x14,0x42,0x14);
+	RTC_SET_DATE(0x16,0x11,0x17);
+	RTC_SET_TIME(0x14,0x42,0x12);
 ////***************Greeting message*************************////
 	CLEAR_LCD();
 	LCD_GOTO(2,1);
@@ -58,7 +58,7 @@ int main()
 	float latit_eeprom=EEPROM_READ_float(108);
 //*****************enter the date*************************////
 
-	set_date(); //to enter the date manually
+	choose_date_way(); //to enter the date manually
 	CLEAR_LCD();
 	 //****************************to check if there is a previous long-lat saved in the eeprom********************/
 	while((int)longit_eeprom==255 ||(int)latit_eeprom==255 ) //the EEPROM is empty
