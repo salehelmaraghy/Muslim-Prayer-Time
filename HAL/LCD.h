@@ -1,7 +1,7 @@
 /*
  * LCD.H
  *
- *  Created on: ??þ/??þ/????
+ *  Created on: ??Ã¾/??Ã¾/????
  *      Author: SALEH
  */
 
@@ -27,7 +27,7 @@ void LCD_SEND_CHAR(unsigned char data);
 void LCD_SEND_STR(unsigned char* data);
 void LCD_SEND_INT(unsigned int number);
 void LCD_GOTO(unsigned char row,unsigned char col);
-void ENABLE_LCD();
+//void ENABLE_LCD();
 void CLEAR_LCD();
 
 
