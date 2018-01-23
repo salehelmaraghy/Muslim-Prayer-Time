@@ -1,20 +1,24 @@
 /*
  * LCD.c
  *
- *  Created on: ??þ/??þ/????
+ *  Created on: ??Ã¾/??Ã¾/????
  *      Author: SALEH
  */
 #include "LCD.h"
 
 #ifdef FOURBIT //if four bit mode
 
+#define enable	SETBIT(LCD_CONTROL_PORT,EN);\
+	_delay_us(5);\
+	CLEARBIT(LCD_CONTROL_PORT,EN);
+/*
 //this function is to enable the LCD to send command or data
 void ENABLE_LCD()
 {
 	SETBIT(LCD_CONTROL_PORT,EN);
 	_delay_us(5);
 	CLEARBIT(LCD_CONTROL_PORT,EN);
-}
+}*/
 //this function is to send commands to the LCD
 void LCD_COMMAND(unsigned char cmd){
 
@@ -24,7 +28,8 @@ void LCD_COMMAND(unsigned char cmd){
 	temp&=0xF0;//send the first four bits first
 	LCD_DATA_PORT&=0x0F;
 	LCD_DATA_PORT|=temp;
-	ENABLE_LCD(); //send the command
+	//ENABLE_LCD(); //send the command
+	enable;
 	if(cmd==0x01 || cmd==0x02) //it differs in the delay (trial and error from the LCD data sheet)
 	{ _delay_ms(2);}
 	else { _delay_us(100);}
@@ -33,7 +38,8 @@ void LCD_COMMAND(unsigned char cmd){
 	temp=temp<<4;
 	LCD_DATA_PORT&=0x0F;
 	LCD_DATA_PORT|=temp;
-	ENABLE_LCD();
+	//ENABLE_LCD();
+	enable;
 	if(cmd==0x01 || cmd==0x02)
 	{ _delay_ms(2);}
 	else { _delay_us(100);}
@@ -76,14 +82,16 @@ void LCD_SEND_CHAR(unsigned char data)
 		temp&=0xF0; //first sent the first four bytes MSB first
 		LCD_DATA_PORT&=0x0F;
 		LCD_DATA_PORT|=temp;
-		ENABLE_LCD();
+		//ENABLE_LCD();
+		enable;
 		_delay_us(100);
 		temp=data;
 		temp&=0x0f;
 		temp=temp<<4;//sent the second four bytes
 		LCD_DATA_PORT&=0x0F;
 		LCD_DATA_PORT|=temp;
-		ENABLE_LCD();
+		//ENABLE_LCD();
+		enable;
 		_delay_us(100);
 		LCD_COMMAND(0x06); //move the cursor after to write the next char.
 }
@@ -162,7 +170,8 @@ void ENABLE_LCD()
 void LCD_COMMAND(unsigned char cmd){
 	CLEARBIT(LCD_CONTROL_PORT,RS);
 	LCD_DATA_PORT=cmd;
-	ENABLE_LCD();
+	//ENABLE_LCD();
+	enable;
 	if(cmd==0x01 || cmd==0x02)
 	{ _delay_ms(2);}
 	else { _delay_us(100);}
@@ -196,7 +205,8 @@ void LCD_SEND_CHAR(unsigned char data)
 {
 	SETBIT(LCD_CONTROL_PORT,RS);
 	LCD_DATA_PORT=data;
-	ENABLE_LCD();
+	//ENABLE_LCD();
+	enable;
 	_delay_us(100);
 	LCD_COMMAND(0x06);
 }
